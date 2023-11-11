@@ -39,7 +39,6 @@ public class CustomI18NProvider implements I18NProvider {
         String value;
         try {
             value = bundle.getString(key);
-            System.out.println(value);
         } catch (final MissingResourceException e) {
             LoggerFactory.getLogger(CustomI18NProvider.class.getName())
                     .warn("Missing resource", e);

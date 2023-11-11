@@ -1,5 +1,6 @@
 package com.github.taurus366.security;
 
+import com.github.taurus366.views.clientViews.IndexPageView;
 import com.github.taurus366.views.login.LoginView;
 import com.vaadin.flow.spring.security.VaadinWebSecurity;
 import org.springframework.context.annotation.Bean;
@@ -25,15 +26,16 @@ public class SecurityConfiguration extends VaadinWebSecurity {
 
         http.authorizeHttpRequests()
                 .requestMatchers(new AntPathRequestMatcher("/images/*.png")).permitAll()
-                .requestMatchers(new AntPathRequestMatcher("/line-awesome/**/*.svg")).permitAll();
+                .requestMatchers(new AntPathRequestMatcher("/line-awesome/**/*.svg")).permitAll()
 
-//                .requestMatchers("/index").permitAll();
-//                .requestMatchers("/").permitAll();
+                .requestMatchers("/test").permitAll()
+                .requestMatchers("/").permitAll();
 
 
 
 
         super.configure(http);
-        setLoginView(http, LoginView.class);
+//        setLoginView(http, LoginView.class);
+        setLoginView(http, IndexPageView.class);
     }
 }

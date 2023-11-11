@@ -43,8 +43,6 @@ public class HelloWorldView extends HorizontalLayout {
 
 
 //        CREATE TABLES FOR LOCALES
-        final String characterEncoding = VaadinService.getCurrentRequest().getCharacterEncoding();
-        System.out.println(characterEncoding);
         name = new TextField(provider.getTranslation("greeting",provider.LOCALE_BG, "ALI"));
 
 
