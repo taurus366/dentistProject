@@ -244,6 +244,7 @@
   "@vaadin/vaadin-lumo-styles/vaadin-iconset.js",
   "@vaadin/vertical-layout/theme/lumo/vaadin-vertical-layout.js",
   "@vaadin/virtual-list/theme/lumo/vaadin-virtual-list.js",
+  "Frontend/generated/jar-resources/browserstorage.js",
   "Frontend/generated/jar-resources/buttonFunctions.js",
   "Frontend/generated/jar-resources/comboBoxConnector.js",
   "Frontend/generated/jar-resources/contextMenuConnector.js",
@@ -270,6 +271,7 @@
   "themes/homeparking/components/vaadin-password-field.css": "0a7d91732f86b30fef5de7bcdb0f83539fea9a0e7d84c7e623f8f0f73afbfd8c",
   "themes/homeparking/components/vaadin-text-area.css": "0a7d91732f86b30fef5de7bcdb0f83539fea9a0e7d84c7e623f8f0f73afbfd8c",
   "themes/homeparking/components/vaadin-text-field.css": "0a7d91732f86b30fef5de7bcdb0f83539fea9a0e7d84c7e623f8f0f73afbfd8c",
+  "browserstorage.js": "a5d5364f42d2b47d642c9eb3ffed649525e9000748fb06a16eeb7da7a2ea5d76",
   "buttonFunctions.js": "c852123f9b2c44eb75e555119d3e05a7dbe78b91d0ab616feb9df1654474707d",
   "comboBoxConnector.js": "1d004c3dae9c76f8bcc68678abe1b8f7bdc8b456f5c9c4c7f190df8ed25d66cd",
   "contextMenuConnector.js": "25a200f8086461635ddd92316ebeb5a868294c8650a190efbae120edb1088f4f",
@@ -295,7 +297,7 @@
   "homeparking": "{\n  \"lumoImports\" : [ \"typography\", \"color\", \"spacing\", \"badge\", \"utility\" ],\n  \"assets\" : {\n    \"@fontsource/arimo\" : {\n      \"*.css\" : \"@fontsource/arimo\",\n      \"files/*\" : \"@fontsource/arimo/files\"\n    }\n  }\n}"
  },
  "entryScripts": [
-  "VAADIN/build/indexhtml-0000ac87.js"
+  "VAADIN/build/indexhtml-622341e6.js"
  ],
  "webComponents": [],
  "cvdlModules": {
@@ -330,6 +332,6 @@
  },
  "packageJsonHash": "2ec254ab6ff45bb9a984a3a7044baca7ffe2984b7f48a3bec5f91a39ca19e43a",
  "indexHtmlGenerated": [
-  "  <script type=\"module\" crossorigin src=\"./VAADIN/build/indexhtml-0000ac87.js\"></script>"
+  "  <script type=\"module\" crossorigin src=\"./VAADIN/build/indexhtml-622341e6.js\"></script>"
  ]
 }

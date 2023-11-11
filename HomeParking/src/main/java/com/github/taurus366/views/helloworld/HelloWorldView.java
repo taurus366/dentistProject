@@ -9,8 +9,11 @@ import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
+import com.vaadin.flow.router.RouteAlias;
 import com.vaadin.flow.server.VaadinRequest;
 import com.vaadin.flow.server.VaadinService;
+import com.vaadin.flow.server.auth.AnonymousAllowed;
+import jakarta.annotation.security.PermitAll;
 import jakarta.annotation.security.RolesAllowed;
 import org.system.i18n.CustomI18NProvider;
 
@@ -21,7 +24,8 @@ import java.util.Optional;
 @Route(value = "hello", layout = MainLayout.class)
 //@RouteAlias(value = "", layout = MainLayout.class)
 //@PermitAll
-@RolesAllowed("ADMIN")
+//@RolesAllowed("ADMIN")
+//@AnonymousAllowed
 public class HelloWorldView extends HorizontalLayout {
 
     private TextField name;

@@ -3,6 +3,7 @@ package com.github.taurus366;
 import com.github.taurus366.model.service.UserRepository;
 import com.vaadin.flow.component.page.AppShellConfigurator;
 import com.vaadin.flow.component.page.Push;
+import com.vaadin.flow.server.AppShellSettings;
 import com.vaadin.flow.spring.annotation.EnableVaadin;
 import com.vaadin.flow.theme.Theme;
 import javax.sql.DataSource;
@@ -48,6 +49,12 @@ public class Application implements AppShellConfigurator {
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
     }
+
+//    @Override
+//    public void configurePage(AppShellSettings settings) {
+//        settings.addFavIcon("icon", "images/favicon.ico", "96x96");
+//        settings.setViewport("width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes, viewport-fit=cover");
+//    }
 
     @Bean
     SqlDataSourceScriptDatabaseInitializer dataSourceScriptDatabaseInitializer(DataSource dataSource,

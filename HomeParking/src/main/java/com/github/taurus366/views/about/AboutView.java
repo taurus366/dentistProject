@@ -13,7 +13,7 @@ import jakarta.annotation.security.RolesAllowed;
 
 @PageTitle("About")
 @Route(value = "about", layout = MainLayout.class)
-@RouteAlias(value = "", layout = MainLayout.class) // open the window by deffault
+//@RouteAlias(value = "", layout = MainLayout.class) // open the window by deffault
 //@AnonymousAllowed
 @RolesAllowed("USER")
 public class AboutView extends VerticalLayout {

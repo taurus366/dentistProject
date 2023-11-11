@@ -3,6 +3,7 @@ package com.github.taurus366.views;
 import com.github.taurus366.model.entity.UserEntity;
 import com.github.taurus366.security.AuthenticatedUser;
 import com.github.taurus366.views.about.AboutView;
+import com.github.taurus366.views.client.IndexPageView;
 import com.github.taurus366.views.helloworld.HelloWorldView;
 import com.github.taurus366.views.user.UserListView;
 import com.vaadin.flow.component.Text;
@@ -21,17 +22,17 @@ import com.vaadin.flow.component.notification.Notification;
 import com.vaadin.flow.component.orderedlayout.Scroller;
 import com.vaadin.flow.component.sidenav.SideNav;
 import com.vaadin.flow.component.sidenav.SideNavItem;
-import com.vaadin.flow.router.PageTitle;
-import com.vaadin.flow.router.RouteConfiguration;
-import com.vaadin.flow.router.RouterLayout;
+import com.vaadin.flow.router.*;
 import com.vaadin.flow.server.StreamResource;
 import com.vaadin.flow.server.auth.AccessAnnotationChecker;
+import com.vaadin.flow.server.auth.AnonymousAllowed;
 import com.vaadin.flow.theme.lumo.LumoUtility;
 import java.io.ByteArrayInputStream;
 import java.util.Arrays;
 import java.util.Optional;
 
 
+import jakarta.annotation.security.PermitAll;
 import org.parking.system.views.camera.CameraListView;
 import org.parking.system.views.door.DoorView;
 import org.vaadin.lineawesome.LineAwesomeIcon;
@@ -39,8 +40,9 @@ import org.vaadin.lineawesome.LineAwesomeIcon;
 /**
  * The main view is a top-level placeholder for other views.
  */
-
-public class MainLayout extends AppLayout implements RouterLayout {
+@Route(value = "user")
+@PermitAll
+public class MainLayout extends AppLayout implements RouterLayout{
 
     private H2 viewTitle;
 
