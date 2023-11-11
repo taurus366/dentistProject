@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.parking.system</groupId>
+    <artifactId>ParkingSystem</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>3.0.4</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+
+    <dependencies>
+
+<!--        <dependency>-->
+<!--            <groupId>org.vaadin.addons.mekaso</groupId>-->
+<!--            <artifactId>progress</artifactId>-->
+<!--            <version>1.1.0</version>-->
+<!--            &lt;!&ndash;            https://vaadin.com/directory/component/progress-components&ndash;&gt;-->
+<!--        </dependency>-->
+
+        <!-- https://mvnrepository.com/artifact/com.pi4j/pi4j-core -->
+        <dependency>
+            <groupId>com.pi4j</groupId>
+            <artifactId>pi4j-core</artifactId>
+            <version>1.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>5.6.4.Final</version> <!-- Use a compatible Hibernate version -->
+        </dependency>
+
+        <dependency>
+            <groupId>org.vaadin.crudui</groupId>
+            <artifactId>crudui</artifactId>
+            <version>7.1.0</version>
+        </dependency>
+
+
+
+        <dependency>
+            <groupId>com.vaadin</groupId>
+            <artifactId>exampledata</artifactId>
+            <version>6.2.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.vaadin</groupId>
+            <artifactId>flow-server</artifactId>
+            <version>24.1.12</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.vaadin</groupId>
+            <artifactId>vaadin-ordered-layout-flow</artifactId>
+            <version>24.1.10</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.vaadin</groupId>
+            <artifactId>flow-html-components</artifactId>
+            <version>24.1.12</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.system.shared</groupId>
+            <artifactId>Shared</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.system.shared</groupId>
+            <artifactId>Shared</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jetbrains</groupId>
+            <artifactId>annotations</artifactId>
+            <version>13.0</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>jakarta.validation</groupId>
+            <artifactId>jakarta.validation-api</artifactId>
+        </dependency>
+        <!--		<dependency>-->
+        <!--			<groupId>com.vaadin</groupId>-->
+        <!--			<artifactId>flow-server</artifactId>-->
+        <!--			<version>24.1.12</version>-->
+        <!--			<scope>compile</scope>-->
+        <!--		</dependency>-->
+    </dependencies>
+
+    <repositories>
+        <repository>
+            <id>Vaadin Directory</id>
+            <url>https://maven.vaadin.com/vaadin-addons</url>
+        </repository>
+    </repositories>
+
+</project>

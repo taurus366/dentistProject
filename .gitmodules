@@ -1,0 +1,12 @@
+[submodule "HomeParking"]
+	path = HomeParking
+	url = https://github.com/taurus366/HomeParking.git
+[submodule "ParkingSystem"]
+	path = ParkingSystem
+	url = https://github.com/taurus366/ParkingSystem.git
+[submodule "Shared"]
+	path = Shared
+	url = https://github.com/taurus366/Shared.git
+[submodule "i18n"]
+	path = i18n
+	url = https://github.com/taurus366/i18n
