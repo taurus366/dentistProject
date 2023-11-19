@@ -17,7 +17,9 @@ public class CustomI18NProvider implements I18NProvider {
     public final Locale LOCALE_EN = new Locale("en");
     public final Locale LOCALE_BG = new Locale("bg");
 
-    private final List<Locale> locales = List.of(LOCALE_EN, LOCALE_BG);
+    public final Locale LOCALE_TR = new Locale("tr");
+
+    private final List<Locale> locales = List.of(LOCALE_EN, LOCALE_BG, LOCALE_TR);
 
     @Override
     public List<Locale> getProvidedLocales() {

@@ -31,6 +31,11 @@ public class UserEntity extends BaseEntity {
     @Column(length = 1000000)
     private byte[] profilePicture;
 
+    @Column()
+    private String locale = "en_EN";
+
+
+
     public UserEntity() {
 
     }
@@ -86,5 +91,11 @@ public class UserEntity extends BaseEntity {
         return this;
     }
 
+    public String getLocale() {
+        return locale;
+    }
 
+    public void setLocale(String locale) {
+        this.locale = locale;
+    }
 }

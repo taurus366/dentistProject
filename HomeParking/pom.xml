@@ -52,6 +52,14 @@
     </dependencyManagement>
 
     <dependencies>
+
+        <dependency>
+            <groupId>org.vaadin.addons.minicalendar</groupId>
+            <artifactId>addon</artifactId>
+            <version>1.4.0</version>
+        </dependency>
+
+
         <dependency>
             <groupId>in.virit</groupId>
             <artifactId>viritin</artifactId>

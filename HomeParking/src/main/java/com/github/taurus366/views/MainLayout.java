@@ -7,6 +7,7 @@ import com.github.taurus366.views.client.IndexPageView;
 import com.github.taurus366.views.helloworld.HelloWorldView;
 import com.github.taurus366.views.user.UserListView;
 import com.vaadin.flow.component.Text;
+import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.applayout.AppLayout;
 import com.vaadin.flow.component.applayout.DrawerToggle;
 import com.vaadin.flow.component.avatar.Avatar;
@@ -14,6 +15,7 @@ import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.contextmenu.ContextMenu;
 import com.vaadin.flow.component.contextmenu.MenuItem;
+import com.vaadin.flow.component.contextmenu.SubMenu;
 import com.vaadin.flow.component.html.*;
 import com.vaadin.flow.component.icon.Icon;
 import com.vaadin.flow.component.icon.VaadinIcon;
@@ -105,7 +107,7 @@ public class MainLayout extends AppLayout implements RouterLayout{
     }
 
     private void addDrawerContent() {
-        H1 appName = new H1("HomeParking");
+        H1 appName = new H1("DENTIST");
         appName.addClassNames(LumoUtility.FontSize.LARGE, LumoUtility.Margin.NONE);
         Header header = new Header(appName);
 
@@ -134,7 +136,15 @@ public class MainLayout extends AppLayout implements RouterLayout{
         }
 
         if(accessChecker.hasAccess(UserListView.class)) {
-            nav.addItem(new SideNavItem("User list", UserListView.class, LineAwesomeIcon.USERS_SOLID.create()));
+//            nav.addItem(new SideNavItem("User list", UserListView.class, LineAwesomeIcon.USERS_SOLID.create()));
+            SideNavItem userNavItem = new SideNavItem("User list");
+                userNavItem.setPrefixComponent(VaadinIcon.USERS.create());
+
+            // Add items to the nested menu
+            userNavItem.addItem(new SideNavItem("User list", UserListView.class, LineAwesomeIcon.USERS_SOLID.create()));
+
+
+            nav.addItem(userNavItem);
         }
 
         return nav;
@@ -172,7 +182,6 @@ public class MainLayout extends AppLayout implements RouterLayout{
             userName.getSubMenu().addItem("Sign out", e -> {
                 authenticatedUser.logout();
             });
-
 
             layout.add(userMenu);
         } else {
