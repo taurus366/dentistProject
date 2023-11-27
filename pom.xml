@@ -14,7 +14,7 @@
         <module>HomeParking</module>
         <module>ParkingSystem</module>
         <module>Shared</module>
-        <module>I18n</module>
+        <module>i18n</module>
     </modules>
 
 </project>

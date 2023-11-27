@@ -1,18 +1,15 @@
-package com.github.taurus366.config;
+package org.system.i18n.config;
 
-
-import com.github.taurus366.uiupdate.Updater;
 import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class ApplicationConfig {
-
+public class AppConfig {
 
     @Bean
-    Updater updater() {
-        return new Updater();
+    public ModelMapper modelMapper() {
+        return new ModelMapper();
     }
 
 }

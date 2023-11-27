@@ -10,13 +10,19 @@ import com.vaadin.flow.component.dialog.Dialog;
 import com.vaadin.flow.component.notification.Notification;
 import com.vaadin.flow.component.orderedlayout.FlexLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
+import com.vaadin.flow.component.radiobutton.RadioButtonGroup;
+import com.vaadin.flow.component.select.Select;
+import com.vaadin.flow.component.select.SelectVariant;
 import com.vaadin.flow.component.timepicker.TimePicker;
 import com.vaadin.flow.component.timepicker.TimePickerVariant;
+import com.vaadin.flow.dom.Element;
 import com.vaadin.flow.router.*;
 import com.vaadin.flow.server.auth.AnonymousAllowed;
 import org.vaadin.addons.minicalendar.MiniCalendar;
 
 import java.time.*;
+import java.util.ArrayList;
+import java.util.List;
 
 
 @AnonymousAllowed
@@ -69,12 +75,14 @@ public class IndexPageView extends FlexLayout implements BeforeEnterObserver {
         MiniCalendar calendar = new MiniCalendar();
         calendar.setDayEnabledProvider(localDate -> localDate.getDayOfWeek() != DayOfWeek.SATURDAY && localDate.getDayOfWeek() != DayOfWeek.SUNDAY);
 
+
+
         // every selected day should be updated the available times
         calendar.addValueChangeListener(event -> {
             Notification.show("Value changed to " + event.getValue());
                 //1. must check db for free hours
                 //2. must show free hours
-            timePicker.setEnabled(true);
+//            timePicker.setEnabled(true);
 
 
         });
@@ -86,22 +94,6 @@ public class IndexPageView extends FlexLayout implements BeforeEnterObserver {
 
             dialogSelectDateTime.open();
         });
-
-//        add(buttonBook, dialogSelectDateTime);
-
-//        Button button = new Button("CLICK ME TO REDIREC TO LOGIN");
-//
-//        button.addClickListener(event -> {
-//
-//           getUI().ifPresent(ui -> {
-//
-//               ui.navigate("login");
-//           });
-//        });
-//
-//        add(button);
-
-
 
         /// DESIGN FOR PAGE
 
@@ -123,7 +115,6 @@ public class IndexPageView extends FlexLayout implements BeforeEnterObserver {
                 .set("height", "122px");
 
         UnorderedList ul = new UnorderedList();
-//        ul.getStyle().set("margin", "5px");
         ul.add(btnLogin);
         ul.add(btnBook2);
 
@@ -160,11 +151,17 @@ public class IndexPageView extends FlexLayout implements BeforeEnterObserver {
                    .set("font-size", "20px")
                    .set("font-family", "Overpass");
 
+           Paragraph paragraphCall = new Paragraph("Или се обадете:");
+           paragraphCall.getStyle().set("font-size", "22px");
+           Span span = new Span("0894396766");
+           span.getStyle().set("font-weight", "600").set("color", "#BB8150").set("font-family", "Overpass");
+           paragraphCall.add(span);
+
 
            Article articleText = new Article();
            articleText.setWidth("70%");
            articleText.getStyle().set("padding-right", "30px");
-        articleText.add(paragraph, paragraph1, buttonBook);
+        articleText.add(paragraph, paragraph1, buttonBook, paragraphCall);
         articleText.getStyle().set("align-self", "self-end");
 
            Article articleImg = new Article();

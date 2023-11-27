@@ -39,11 +39,11 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 //})
 //@VaadinServletConfiguration ( ui = MyUI.class, productionMode = false )
 //@EnableVaadin
-@EnableVaadin({"com.github.taurus366", "org.parking.system", "org.system.shared"})
+@EnableVaadin({"com.github.taurus366", "org.parking.system", "org.system.shared", "org.system.i18n"})
 //@PWA(name = "Web Push", shortName = "Push")
-@ComponentScan(basePackages = {"com.github.taurus366", "org.parking.system", "org.system.shared"})
-@EnableJpaRepositories(basePackages = {"com.github.taurus366", "org.parking.system", "org.system.shared"})
-@EntityScan(basePackages = {"com.github.taurus366", "org.parking.system", "org.system.shared"})
+@ComponentScan(basePackages = {"com.github.taurus366", "org.parking.system", "org.system.shared", "org.system.i18n"})
+@EnableJpaRepositories(basePackages = {"com.github.taurus366", "org.parking.system", "org.system.shared", "org.system.i18n"})
+@EntityScan(basePackages = {"com.github.taurus366", "org.parking.system", "org.system.shared", "org.system.i18n"})
 public class Application implements AppShellConfigurator {
 
     public static void main(String[] args) {
