@@ -5,6 +5,7 @@ import com.github.taurus366.security.AuthenticatedUser;
 import com.github.taurus366.views.about.AboutView;
 import com.github.taurus366.views.client.IndexPageView;
 import com.github.taurus366.views.helloworld.HelloWorldView;
+import com.github.taurus366.views.stats.StatsView;
 import com.github.taurus366.views.user.UserListView;
 import com.vaadin.flow.component.Text;
 import com.vaadin.flow.component.UI;
@@ -111,8 +112,6 @@ public class MainLayout extends AppLayout implements RouterLayout{
         appName.addClassNames(LumoUtility.FontSize.LARGE, LumoUtility.Margin.NONE);
         Header header = new Header(appName);
 
-
-
         Scroller scroller = new Scroller(createNavigation());
 
         addToDrawer(header, scroller, createFooter());
@@ -143,8 +142,11 @@ public class MainLayout extends AppLayout implements RouterLayout{
             // Add items to the nested menu
             userNavItem.addItem(new SideNavItem("User list", UserListView.class, LineAwesomeIcon.USERS_SOLID.create()));
 
-
             nav.addItem(userNavItem);
+        }
+
+        if(accessChecker.hasAccess(StatsView.class)) {
+            nav.addItem(new SideNavItem("Stats", StatsView.class, LineAwesomeIcon.SASS.create()));
         }
 
         return nav;
@@ -202,4 +204,6 @@ public class MainLayout extends AppLayout implements RouterLayout{
         PageTitle title = getContent().getClass().getAnnotation(PageTitle.class);
         return title == null ? "" : title.value();
     }
+
+
 }
