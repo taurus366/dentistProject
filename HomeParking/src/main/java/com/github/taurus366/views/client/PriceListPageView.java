@@ -1,7 +1,10 @@
 package com.github.taurus366.views.client;
 
+import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
+import com.vaadin.flow.component.dependency.CssImport;
+import com.vaadin.flow.component.dependency.StyleSheet;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.Image;
 import com.vaadin.flow.component.html.Section;
@@ -10,12 +13,14 @@ import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.server.auth.AnonymousAllowed;
+import com.vaadin.flow.shared.ui.LoadMode;
 import org.vaadin.stefan.table.Table;
 import org.vaadin.stefan.table.TableRow;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
 @AnonymousAllowed
+@StyleSheet("./themes/homeparking/price_list_style.css")
 @PageTitle("Price list")
 @Route(value = "price_list")
 public class PriceListPageView extends VerticalLayout {
@@ -65,6 +70,10 @@ public class PriceListPageView extends VerticalLayout {
                 .set("border-collapse", "collapse")
                 .set("text-align", "center")
                 .set("margin", "auto");
+
+        table.getElement().setAttribute("data-hover", "hover_effect");
+
+        table.addClassName("price-table");
 
         TableRow headerRow1 = table.addRow();
 

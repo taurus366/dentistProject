@@ -1,0 +1,3 @@
+.price-table > tr:not(:first-child):not(:nth-child(2)):hover {
+    background: #b7bbbb !important;
+}
