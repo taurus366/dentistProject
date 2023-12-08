@@ -3,12 +3,9 @@ package com.github.taurus366.views;
 import com.github.taurus366.model.entity.UserEntity;
 import com.github.taurus366.security.AuthenticatedUser;
 import com.github.taurus366.views.about.AboutView;
-import com.github.taurus366.views.client.IndexPageView;
-import com.github.taurus366.views.helloworld.HelloWorldView;
 import com.github.taurus366.views.stats.StatsView;
 import com.github.taurus366.views.user.UserListView;
 import com.vaadin.flow.component.Text;
-import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.applayout.AppLayout;
 import com.vaadin.flow.component.applayout.DrawerToggle;
 import com.vaadin.flow.component.avatar.Avatar;
@@ -16,19 +13,16 @@ import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.contextmenu.ContextMenu;
 import com.vaadin.flow.component.contextmenu.MenuItem;
-import com.vaadin.flow.component.contextmenu.SubMenu;
 import com.vaadin.flow.component.html.*;
 import com.vaadin.flow.component.icon.Icon;
 import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.menubar.MenuBar;
-import com.vaadin.flow.component.notification.Notification;
 import com.vaadin.flow.component.orderedlayout.Scroller;
 import com.vaadin.flow.component.sidenav.SideNav;
 import com.vaadin.flow.component.sidenav.SideNavItem;
 import com.vaadin.flow.router.*;
 import com.vaadin.flow.server.StreamResource;
 import com.vaadin.flow.server.auth.AccessAnnotationChecker;
-import com.vaadin.flow.server.auth.AnonymousAllowed;
 import com.vaadin.flow.theme.lumo.LumoUtility;
 import java.io.ByteArrayInputStream;
 import java.util.Arrays;
@@ -36,8 +30,6 @@ import java.util.Optional;
 
 
 import jakarta.annotation.security.PermitAll;
-import org.parking.system.views.camera.CameraListView;
-import org.parking.system.views.door.DoorView;
 import org.vaadin.lineawesome.LineAwesomeIcon;
 
 /**
@@ -125,10 +117,6 @@ public class MainLayout extends AppLayout implements RouterLayout{
     private SideNav createNavigation() {
         SideNav nav = new SideNav();
 
-        if (accessChecker.hasAccess(HelloWorldView.class)) {
-            nav.addItem(new SideNavItem("Hello World", HelloWorldView.class, LineAwesomeIcon.GLOBE_SOLID.create()));
-
-        }
         if (accessChecker.hasAccess(AboutView.class)) {
             nav.addItem(new SideNavItem("About", AboutView.class, LineAwesomeIcon.FILE.create()));
 
@@ -179,7 +167,7 @@ public class MainLayout extends AppLayout implements RouterLayout{
             div.getElement().getStyle().set("gap", "var(--lumo-space-s)");
             userName.add(div);
             userName.getSubMenu().addItem("Profile", e -> {
-                Notification.show("Not implemented yet!");
+                getUI().ifPresent(ui -> ui.navigate("profile"));
             });
             userName.getSubMenu().addItem("Sign out", e -> {
                 authenticatedUser.logout();
