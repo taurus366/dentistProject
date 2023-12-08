@@ -52,6 +52,8 @@ public class LoginView extends LoginOverlay implements BeforeEnterObserver {
             setOpened(false);
 //            UI.getCurrent().getPushConfiguration().setPushMode(PushMode.AUTOMATIC);
             event.forwardTo("user");
+//            event.forwardTo("stats");
+
         }
 
 

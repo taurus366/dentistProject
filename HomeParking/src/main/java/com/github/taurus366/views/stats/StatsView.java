@@ -9,6 +9,7 @@ import com.vaadin.flow.component.html.H2;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
+import com.vaadin.flow.router.RouteAlias;
 import jakarta.annotation.security.PermitAll;
 import org.system.i18n.CustomI18NProvider;
 import org.system.i18n.service.LanguageService;
@@ -18,6 +19,7 @@ import java.util.Optional;
 
 @PageTitle("Statistic")
 @Route(value = "stats", layout = MainLayout.class)
+@RouteAlias(value = "stats", layout = MainLayout.class)
 @PermitAll
 public class StatsView extends VerticalLayout {
 
