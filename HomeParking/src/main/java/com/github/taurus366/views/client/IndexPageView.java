@@ -4,6 +4,7 @@ import com.github.taurus366.security.AuthenticatedUser;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
+import com.vaadin.flow.component.dependency.StyleSheet;
 import com.vaadin.flow.component.html.*;
 import com.vaadin.flow.component.datetimepicker.DateTimePicker;
 import com.vaadin.flow.component.dialog.Dialog;
@@ -26,6 +27,7 @@ import java.util.List;
 
 
 @AnonymousAllowed
+@StyleSheet("./themes/homeparking/index_page_view.css")
 @PageTitle("Home")
 @Route(value = "home")
 @RouteAlias(value = "")
@@ -114,7 +116,14 @@ public class IndexPageView extends FlexLayout implements BeforeEnterObserver {
                 .set("width", "205px")
                 .set("height", "122px");
 
+
+        Button priceListBtn = new Button("Цени");
+        priceListBtn.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
+        priceListBtn.addClickListener(event -> getUI().ifPresent(ui -> ui.navigate("price_list")));
+        priceListBtn.getStyle().set("margin-right", "10px");
+
         UnorderedList ul = new UnorderedList();
+        ul.add(priceListBtn);
         ul.add(btnLogin);
         ul.add(btnBook2);
 
@@ -163,9 +172,11 @@ public class IndexPageView extends FlexLayout implements BeforeEnterObserver {
            articleText.getStyle().set("padding-right", "30px");
         articleText.add(paragraph, paragraph1, buttonBook, paragraphCall);
         articleText.getStyle().set("align-self", "self-end");
+        articleText.addClassName("text-article");
 
            Article articleImg = new Article();
-//        articleImg.setWidth("100%");
+           articleImg.addClassName("img-article");
+
            articleImg.add(image);
 
            Section sectionMain = new Section();

@@ -1,0 +1,40 @@
+@media (min-width: 300px) and (max-width: 404px) {
+    .header-sectionMain > ul {
+        padding: unset;
+    }
+
+    .text-article > p {
+        font-size: 21px !important;
+    }
+}
+
+@media (min-width: 404px) and (max-width: 480px) {
+    .text-article > p {
+        font-size: 36px !important;
+    }
+}
+
+@media (min-width: 300px) and (max-width: 800px) {
+
+    .main-sectionMain {
+        flex-direction: column-reverse;
+    }
+    .text-article {
+        width: unset !important;
+
+    }
+    .text-article > p {
+        /*font-size: 36px !important;*/
+    }
+    .header-sectionMain {
+        flex-direction: column;
+    }
+}
+
+@media (min-width: 801px) and (max-width: 1112px) {
+    .img-article > img {
+        height: 100% !important;
+        width: 100%;
+        object-fit: unset !important;
+    }
+}
