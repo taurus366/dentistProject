@@ -32,7 +32,7 @@ public class ProfileView extends VerticalLayout {
 
         CustomI18NProvider languageProvider = new CustomI18NProvider(languageService);
         System.out.println(userLocale);
-        final ComboBox<LanguageDTO> languageSelectorBox = languageProvider.getLanguageSelectorBox(userLocale, languageProvider.getTranslation("select_language", Locale.of(userLocale), ""));
+        final ComboBox<LanguageDTO> languageSelectorBox = languageProvider.getLanguageSelectorBox(userLocale, languageProvider.getTranslation("SelectLanguage", Locale.of(userLocale), ""));
         languageSelectorBox.addValueChangeListener(event -> {
             optionalUser.ifPresent(userEntity -> {
                 userEntity.setLocale(event.getValue().getLocale());

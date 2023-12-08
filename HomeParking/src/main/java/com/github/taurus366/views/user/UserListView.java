@@ -3,6 +3,7 @@ package com.github.taurus366.views.user;
 import com.github.taurus366.model.RoleEnum;
 import com.github.taurus366.model.entity.UserEntity;
 import com.github.taurus366.model.service.UserRepository;
+import com.github.taurus366.security.AuthenticatedUser;
 import com.github.taurus366.uiupdate.UIItemPair;
 import com.github.taurus366.uiupdate.Updater;
 import com.github.taurus366.views.MainLayout;
@@ -24,9 +25,13 @@ import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.spring.data.VaadinSpringDataHelpers;
 import jakarta.annotation.security.RolesAllowed;
+import org.system.i18n.CustomI18NProvider;
+import org.system.i18n.service.LanguageService;
 
 import java.time.Instant;
 import java.util.List;
+import java.util.Locale;
+import java.util.Optional;
 
 @PageTitle("Users list")
 @Route(value = "user_list", layout = MainLayout.class)
@@ -46,10 +51,13 @@ public class UserListView extends VerticalLayout {
 
     private Updater updater;
 
+    private String userLocale;
+
     @Override
     protected void onAttach(AttachEvent attachEvent) {
         final UI ui = UI.getCurrent();
         updater.addItemToUi(ui, ENTITYGRIDNAME, entityGrid);
+
 
     }
 
@@ -59,16 +67,21 @@ public class UserListView extends VerticalLayout {
         updater.removeItemFromUi(ui);
     }
 
-    public UserListView(UserRepository userRepository, Updater updater) {
+    public UserListView(UserRepository userRepository, Updater updater, LanguageService languageService, AuthenticatedUser authenticatedUser) {
         this.userRepository = userRepository;
         this.updater = updater;
 
+        Optional<UserEntity> optionalUser = authenticatedUser.get();
+        optionalUser.ifPresent(userEntity -> userLocale = userEntity.getLocale());
+
+
+        CustomI18NProvider languageProvider = new CustomI18NProvider(languageService);
 
         entityGrid = new Grid<>(UserEntity.class, false);
         Editor<UserEntity> editor = entityGrid.getEditor();
 
-
-        add(new H1("Users List"));
+//        final String userListTitle = languageProvider.getTranslation("userList", Locale.of(userLocale));
+//        add(new H1(userListTitle));
 
         Button newUserBtn = new Button("add New");
 

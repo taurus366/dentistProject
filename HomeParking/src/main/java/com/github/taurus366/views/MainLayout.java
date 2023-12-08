@@ -120,7 +120,7 @@ public class MainLayout extends AppLayout implements RouterLayout, BeforeEnterOb
 
     private void addDrawerContent() {
 
-        final String title = languageProvider.getTranslation("dentist", Locale.of(userLocale));
+        final String title = languageProvider.getTranslation("Dentist", Locale.of(userLocale));
 
         H1 appName = new H1(title);
         appName.addClassNames(LumoUtility.FontSize.LARGE, LumoUtility.Margin.NONE);
@@ -146,17 +146,20 @@ public class MainLayout extends AppLayout implements RouterLayout, BeforeEnterOb
 
         if(accessChecker.hasAccess(UserListView.class)) {
 //            nav.addItem(new SideNavItem("User list", UserListView.class, LineAwesomeIcon.USERS_SOLID.create()));
-            SideNavItem userNavItem = new SideNavItem("User list");
-                userNavItem.setPrefixComponent(VaadinIcon.USERS.create());
+            final String userListTitle = languageProvider.getTranslation("userList", Locale.of(userLocale));
+//            SideNavItem userNavItem = new SideNavItem(userListTitle);
+//                userNavItem.setPrefixComponent(VaadinIcon.USERS.create());
 
             // Add items to the nested menu
-            userNavItem.addItem(new SideNavItem("User list", UserListView.class, LineAwesomeIcon.USERS_SOLID.create()));
+//            userNavItem.addItem(new SideNavItem("User list", UserListView.class, LineAwesomeIcon.USERS_SOLID.create()));
 
-            nav.addItem(userNavItem);
+//            nav.addItem(userNavItem);
+            nav.addItem(new SideNavItem(userListTitle, UserListView.class, LineAwesomeIcon.USERS_SOLID.create()));
         }
 
         if(accessChecker.hasAccess(StatsView.class)) {
-            nav.addItem(new SideNavItem("Stats", StatsView.class, LineAwesomeIcon.SASS.create()));
+            final String title = languageProvider.getTranslation("Stats", Locale.of(userLocale));
+            nav.addItem(new SideNavItem(title, StatsView.class, LineAwesomeIcon.SASS.create()));
         }
 
         return nav;
@@ -188,10 +191,12 @@ public class MainLayout extends AppLayout implements RouterLayout, BeforeEnterOb
             div.getElement().getStyle().set("align-items", "center");
             div.getElement().getStyle().set("gap", "var(--lumo-space-s)");
             userName.add(div);
-            userName.getSubMenu().addItem("Profile", e -> {
+            final String profileTitle = languageProvider.getTranslation("Profile", Locale.of(userLocale));
+            userName.getSubMenu().addItem(profileTitle, e -> {
                 getUI().ifPresent(ui -> ui.navigate("profile"));
             });
-            userName.getSubMenu().addItem("Sign out", e -> {
+           final String signOutTitle = languageProvider.getTranslation("SignOut", Locale.of(userLocale));
+            userName.getSubMenu().addItem(signOutTitle, e -> {
                 authenticatedUser.logout();
             });
 

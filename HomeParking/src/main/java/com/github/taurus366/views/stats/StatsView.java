@@ -51,7 +51,7 @@ public class StatsView extends VerticalLayout {
         CategoryData labels = new CategoryData(January, February, March, April, May, June, July, August, September, October, November, December);
         Data data = new Data(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12);
 
-        String visitors = languageProvider.getTranslation("site_visitors", Locale.of(userLocale));
+        String visitors = languageProvider.getTranslation("SiteVisitors", Locale.of(userLocale));
         H2 h2VisitorsTitle = new H2(visitors);
 //        Title title = new Title(visitors);
 //        Position pTitle = new Position();
