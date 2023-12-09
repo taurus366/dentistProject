@@ -3,6 +3,7 @@ package com.github.taurus366.views;
 import com.github.taurus366.model.entity.UserEntity;
 import com.github.taurus366.security.AuthenticatedUser;
 import com.github.taurus366.views.about.AboutView;
+import com.github.taurus366.views.settings.PriceListSettingsView;
 import com.github.taurus366.views.stats.StatsView;
 import com.github.taurus366.views.user.UserListView;
 import com.vaadin.flow.component.AttachEvent;
@@ -161,6 +162,18 @@ public class MainLayout extends AppLayout implements RouterLayout, BeforeEnterOb
             final String title = languageProvider.getTranslation("Stats", Locale.of(userLocale));
             nav.addItem(new SideNavItem(title, StatsView.class, LineAwesomeIcon.SASS.create()));
         }
+
+
+        final String settingsTitle = languageProvider.getTranslation("Settings", Locale.of(userLocale));
+        /// SETTINGS
+        SideNavItem settingsNavItem = new SideNavItem(settingsTitle);
+        settingsNavItem.setPrefixComponent(VaadinIcon.OPTIONS.create());
+        if(accessChecker.hasAccess(PriceListSettingsView.class)){
+            final String priceListTitle = languageProvider.getTranslation("PriceList", Locale.of(userLocale));
+            settingsNavItem.addItem(new SideNavItem(priceListTitle, PriceListSettingsView.class, LineAwesomeIcon.DOLLAR_SIGN_SOLID.create()));
+        }
+
+        nav.addItem(settingsNavItem);
 
         return nav;
     }

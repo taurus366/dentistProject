@@ -67,9 +67,6 @@ public class StatsView extends VerticalLayout {
         NightingaleRoseChart nc = new NightingaleRoseChart(labels, data);
         Position p = new Position();
         p.setLeft(Size.percentage(50));
-//        p.setLeft(Size.percentage(90));
-//        p.setTop(Size.pixels());
-//        p.setWidth(Size.pixels(350));
         nc.setPosition(p); // Position it leaving 50% space at the top
 
         // Second chart to add.
@@ -78,8 +75,6 @@ public class StatsView extends VerticalLayout {
         rc = new RectangularCoordinate(new XAxis(DataType.CATEGORY), new YAxis(DataType.NUMBER));
         p = new Position();
         p.setRight(Size.percentage(50));
-//        p.setBottom(Size.percentage(55));
-//        p.setWidth(Size.percentage(70));
         rc.setPosition(p); // Position it leaving 55% space at the bottom
         bc.plotOn(rc); // Bar chart needs to be plotted on a coordinate system
 
@@ -200,7 +195,6 @@ public class StatsView extends VerticalLayout {
 //
 //// Finally, add it to my layout
 //        add(soChart);
-
 
     }
 }
