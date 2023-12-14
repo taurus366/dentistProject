@@ -3,6 +3,7 @@ package com.github.taurus366.views;
 import com.github.taurus366.model.entity.UserEntity;
 import com.github.taurus366.security.AuthenticatedUser;
 import com.github.taurus366.views.about.AboutView;
+import com.github.taurus366.views.settings.PriceListGroupSettingsView;
 import com.github.taurus366.views.settings.PriceListSettingsView;
 import com.github.taurus366.views.stats.StatsView;
 import com.github.taurus366.views.user.UserListView;
@@ -171,6 +172,10 @@ public class MainLayout extends AppLayout implements RouterLayout, BeforeEnterOb
         if(accessChecker.hasAccess(PriceListSettingsView.class)){
             final String priceListTitle = languageProvider.getTranslation("PriceList", Locale.of(userLocale));
             settingsNavItem.addItem(new SideNavItem(priceListTitle, PriceListSettingsView.class, LineAwesomeIcon.DOLLAR_SIGN_SOLID.create()));
+        }
+        if(accessChecker.hasAccess(PriceListGroupSettingsView.class)){
+            final String priceListGroupTitle = languageProvider.getTranslation("PriceListGroup", Locale.of(userLocale));
+            settingsNavItem.addItem(new SideNavItem(priceListGroupTitle, PriceListGroupSettingsView.class, LineAwesomeIcon.OBJECT_GROUP.create()));
         }
 
         nav.addItem(settingsNavItem);

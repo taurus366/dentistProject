@@ -69,7 +69,7 @@
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
-            <version>42.6.0</version>
+            <version>42.7.1</version>
         </dependency>
 
 
@@ -180,6 +180,14 @@
             <artifactId>html-table</artifactId>
             <version>1.2.0</version>
         </dependency>
+
+<!--        CRUD TABLE-->
+        <dependency>
+            <groupId>org.vaadin.crudui</groupId>
+            <artifactId>crudui</artifactId>
+            <version>7.1.0</version>
+        </dependency>
+
 
     </dependencies>
 
