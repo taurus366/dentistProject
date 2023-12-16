@@ -1,9 +1,13 @@
 package com.github.taurus366.views.client;
 
+import com.github.taurus366.model.entity.UserEntity;
 import com.github.taurus366.security.AuthenticatedUser;
+import com.vaadin.flow.component.AttachEvent;
+import com.vaadin.flow.component.ComponentEventListener;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
+import com.vaadin.flow.component.combobox.ComboBox;
 import com.vaadin.flow.component.dependency.StyleSheet;
 import com.vaadin.flow.component.html.*;
 import com.vaadin.flow.component.datetimepicker.DateTimePicker;
@@ -19,11 +23,18 @@ import com.vaadin.flow.component.timepicker.TimePickerVariant;
 import com.vaadin.flow.dom.Element;
 import com.vaadin.flow.router.*;
 import com.vaadin.flow.server.auth.AnonymousAllowed;
+import com.vaadin.flow.shared.Registration;
+import org.system.i18n.CountryFlagT;
+import org.system.i18n.CustomI18NProvider;
+import org.system.i18n.model.dto.LanguageDTO;
+import org.system.i18n.service.LanguageService;
 import org.vaadin.addons.minicalendar.MiniCalendar;
 
 import java.time.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
+import java.util.Optional;
 
 
 @AnonymousAllowed
@@ -33,8 +44,32 @@ import java.util.List;
 @RouteAlias(value = "")
 public class IndexPageView extends FlexLayout implements BeforeEnterObserver {
     private final AuthenticatedUser authenticatedUser;
-    public IndexPageView(AuthenticatedUser authenticatedUser) {
+    private String userLocale;
+
+    @Override
+    protected void onAttach(AttachEvent attachEvent) {
+        // IMPLEMENT VISIT COUNT
+        System.out.println(attachEvent.getUI().getSession().getSession().getId());
+    }
+
+    public IndexPageView(AuthenticatedUser authenticatedUser, LanguageService languageService) {
         this.authenticatedUser = authenticatedUser;
+
+        Optional<UserEntity> optionalUser = authenticatedUser.get();
+        optionalUser.ifPresent(userEntity -> userLocale = userEntity.getLocale());
+
+        userLocale = "bg_BG";
+        CustomI18NProvider languageProvider = new CustomI18NProvider(languageService);
+        final ComboBox<LanguageDTO> getLanguageSelectorBoxCustomer = languageProvider.getLanguageSelectorBoxCustomer(userLocale, languageProvider.getTranslation("SelectLanguage", Locale.of(userLocale), ""));
+        getLanguageSelectorBoxCustomer.addValueChangeListener(event -> {
+            optionalUser.ifPresent(userEntity -> {
+                userEntity.setLocale(event.getValue().getLocale());
+//                userService.update(userEntity);
+                UI.getCurrent().getPage().reload();
+            });
+        });
+
+        getLanguageSelectorBoxCustomer.getStyle().set("margin-right", "10px");
 
 
         Button buttonBook = new Button("РЕЗЕРВИРАЙТЕ СЕГА");
@@ -123,6 +158,7 @@ public class IndexPageView extends FlexLayout implements BeforeEnterObserver {
         priceListBtn.getStyle().set("margin-right", "10px");
 
         UnorderedList ul = new UnorderedList();
+        ul.add(getLanguageSelectorBoxCustomer);
         ul.add(priceListBtn);
         ul.add(btnLogin);
         ul.add(btnBook2);
