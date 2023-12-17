@@ -126,6 +126,7 @@ public class MainLayout extends AppLayout implements RouterLayout, BeforeEnterOb
         H1 appName = new H1(title);
         appName.addClassNames(LumoUtility.FontSize.LARGE, LumoUtility.Margin.NONE);
         Header header = new Header(appName);
+        header.getStyle().set("box-shadow", "1px 2px 20px 0px");
 
         Scroller scroller = new Scroller(createNavigation());
 
@@ -155,26 +156,35 @@ public class MainLayout extends AppLayout implements RouterLayout, BeforeEnterOb
 //            userNavItem.addItem(new SideNavItem("User list", UserListView.class, LineAwesomeIcon.USERS_SOLID.create()));
 
 //            nav.addItem(userNavItem);
-            nav.addItem(new SideNavItem(userListTitle, UserListView.class, LineAwesomeIcon.USERS_SOLID.create()));
+            final SideNavItem sideNavItem = new SideNavItem(userListTitle, UserListView.class, LineAwesomeIcon.USERS_SOLID.create());
+            makeHoverLeaveEffect(sideNavItem);
+            nav.addItem(sideNavItem);
         }
 
         if(accessChecker.hasAccess(StatsView.class)) {
             final String title = languageProvider.getTranslation("Stats", Locale.of(userLocale));
-            nav.addItem(new SideNavItem(title, StatsView.class, LineAwesomeIcon.SASS.create()));
+            final SideNavItem sideNavItem = new SideNavItem(title, StatsView.class, LineAwesomeIcon.SASS.create());
+            makeHoverLeaveEffect(sideNavItem);
+            nav.addItem(sideNavItem);
         }
 
 
         final String settingsTitle = languageProvider.getTranslation("Settings", Locale.of(userLocale));
         /// SETTINGS
         SideNavItem settingsNavItem = new SideNavItem(settingsTitle);
+//        makeHoverLeaveEffect(settingsNavItem);
         settingsNavItem.setPrefixComponent(VaadinIcon.OPTIONS.create());
         if(accessChecker.hasAccess(PriceListSettingsView.class)){
             final String priceListTitle = languageProvider.getTranslation("PriceList", Locale.of(userLocale));
-            settingsNavItem.addItem(new SideNavItem(priceListTitle, PriceListSettingsView.class, LineAwesomeIcon.DOLLAR_SIGN_SOLID.create()));
+            final SideNavItem sideNavItem = new SideNavItem(priceListTitle, PriceListSettingsView.class, LineAwesomeIcon.DOLLAR_SIGN_SOLID.create());
+            makeHoverLeaveEffect(sideNavItem);
+            settingsNavItem.addItem(sideNavItem);
         }
         if(accessChecker.hasAccess(PriceListGroupSettingsView.class)){
             final String priceListGroupTitle = languageProvider.getTranslation("PriceListGroup", Locale.of(userLocale));
-            settingsNavItem.addItem(new SideNavItem(priceListGroupTitle, PriceListGroupSettingsView.class, LineAwesomeIcon.OBJECT_GROUP.create()));
+            final SideNavItem sideNavItem = new SideNavItem(priceListGroupTitle, PriceListGroupSettingsView.class, LineAwesomeIcon.OBJECT_GROUP.create());
+            makeHoverLeaveEffect(sideNavItem);
+            settingsNavItem.addItem(sideNavItem);
         }
 
         nav.addItem(settingsNavItem);
@@ -235,5 +245,14 @@ public class MainLayout extends AppLayout implements RouterLayout, BeforeEnterOb
     private String getCurrentPageTitle() {
         PageTitle title = getContent().getClass().getAnnotation(PageTitle.class);
         return title == null ? "" : title.value();
+    }
+
+    private void makeHoverLeaveEffect(SideNavItem sideNavItem) {
+        sideNavItem.getElement().addEventListener("mouseover", event -> {
+            sideNavItem.getStyle().set("padding-left", "10px");
+        });
+        sideNavItem.getElement().addEventListener("mouseleave", event -> {
+            sideNavItem.getStyle().remove("padding-left");
+        });
     }
 }
