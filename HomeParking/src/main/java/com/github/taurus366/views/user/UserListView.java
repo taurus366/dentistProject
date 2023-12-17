@@ -14,7 +14,6 @@ import com.vaadin.flow.component.combobox.MultiSelectComboBox;
 import com.vaadin.flow.component.dialog.Dialog;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.grid.editor.Editor;
-import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
@@ -26,11 +25,11 @@ import com.vaadin.flow.router.Route;
 import com.vaadin.flow.spring.data.VaadinSpringDataHelpers;
 import jakarta.annotation.security.RolesAllowed;
 import org.system.i18n.CustomI18NProvider;
+import org.system.i18n.service.LanguageCustomerService;
 import org.system.i18n.service.LanguageService;
 
 import java.time.Instant;
 import java.util.List;
-import java.util.Locale;
 import java.util.Optional;
 
 @PageTitle("Users list")
@@ -67,7 +66,7 @@ public class UserListView extends VerticalLayout {
         updater.removeItemFromUi(ui);
     }
 
-    public UserListView(UserRepository userRepository, Updater updater, LanguageService languageService, AuthenticatedUser authenticatedUser) {
+    public UserListView(UserRepository userRepository, Updater updater, LanguageService languageService, AuthenticatedUser authenticatedUser, LanguageCustomerService languageCustomerService) {
         this.userRepository = userRepository;
         this.updater = updater;
 
@@ -75,7 +74,7 @@ public class UserListView extends VerticalLayout {
         optionalUser.ifPresent(userEntity -> userLocale = userEntity.getLocale());
 
 
-        CustomI18NProvider languageProvider = new CustomI18NProvider(languageService);
+        CustomI18NProvider languageProvider = new CustomI18NProvider(languageService, languageCustomerService);
 
         entityGrid = new Grid<>(UserEntity.class, false);
         Editor<UserEntity> editor = entityGrid.getEditor();

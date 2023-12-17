@@ -12,6 +12,7 @@ import com.vaadin.flow.router.Route;
 import com.vaadin.flow.router.RouteAlias;
 import jakarta.annotation.security.PermitAll;
 import org.system.i18n.CustomI18NProvider;
+import org.system.i18n.service.LanguageCustomerService;
 import org.system.i18n.service.LanguageService;
 
 import java.util.Locale;
@@ -26,13 +27,13 @@ public class StatsView extends VerticalLayout {
     private String userLocale;
 
 
-    public StatsView(LanguageService languageService, AuthenticatedUser authenticatedUser) {
+    public StatsView(LanguageService languageService, AuthenticatedUser authenticatedUser, LanguageCustomerService languageCustomerService) {
         Optional<UserEntity> optionalUser = authenticatedUser.get();
         optionalUser.ifPresent(userEntity -> userLocale = userEntity.getLocale().toUpperCase());
 
         setMargin(true);
 
-        CustomI18NProvider languageProvider = new CustomI18NProvider(languageService);
+        CustomI18NProvider languageProvider = new CustomI18NProvider(languageService, languageCustomerService);
 
         String January = languageProvider.getTranslation("January", Locale.of(userLocale));
         String February = languageProvider.getTranslation("February", Locale.of(userLocale));

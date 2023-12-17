@@ -7,9 +7,7 @@ import com.github.taurus366.views.settings.PriceListGroupSettingsView;
 import com.github.taurus366.views.settings.PriceListSettingsView;
 import com.github.taurus366.views.stats.StatsView;
 import com.github.taurus366.views.user.UserListView;
-import com.vaadin.flow.component.AttachEvent;
 import com.vaadin.flow.component.Text;
-import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.applayout.AppLayout;
 import com.vaadin.flow.component.applayout.DrawerToggle;
 import com.vaadin.flow.component.avatar.Avatar;
@@ -36,6 +34,7 @@ import java.util.Optional;
 
 import jakarta.annotation.security.PermitAll;
 import org.system.i18n.CustomI18NProvider;
+import org.system.i18n.service.LanguageCustomerService;
 import org.system.i18n.service.LanguageService;
 import org.vaadin.lineawesome.LineAwesomeIcon;
 
@@ -63,10 +62,10 @@ public class MainLayout extends AppLayout implements RouterLayout, BeforeEnterOb
         }
     }
 
-    public MainLayout(AuthenticatedUser authenticatedUser, AccessAnnotationChecker accessChecker, LanguageService languageService) {
+    public MainLayout(AuthenticatedUser authenticatedUser, AccessAnnotationChecker accessChecker, LanguageService languageService, LanguageCustomerService languageCustomerService) {
         Optional<UserEntity> optionalUser = authenticatedUser.get();
         optionalUser.ifPresent(userEntity -> userLocale = userEntity.getLocale().toUpperCase());
-        languageProvider = new CustomI18NProvider(languageService);
+        languageProvider = new CustomI18NProvider(languageService, languageCustomerService);
 
         this.authenticatedUser = authenticatedUser;
         this.accessChecker = accessChecker;

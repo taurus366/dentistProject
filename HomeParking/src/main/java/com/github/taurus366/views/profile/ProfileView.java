@@ -12,6 +12,7 @@ import com.vaadin.flow.router.Route;
 import jakarta.annotation.security.PermitAll;
 import org.system.i18n.CustomI18NProvider;
 import org.system.i18n.model.dto.LanguageDTO;
+import org.system.i18n.service.LanguageCustomerService;
 import org.system.i18n.service.LanguageService;
 
 import java.util.Locale;
@@ -25,13 +26,13 @@ public class ProfileView extends VerticalLayout {
     private String userLocale;
 
 
-    public ProfileView(LanguageService languageService, AuthenticatedUser authenticatedUser, UserService userService) {
+    public ProfileView(LanguageService languageService, AuthenticatedUser authenticatedUser, UserService userService, LanguageCustomerService languageCustomerService) {
         Optional<UserEntity> optionalUser = authenticatedUser.get();
         optionalUser.ifPresent(userEntity -> userLocale = userEntity.getLocale());
 
 
-        CustomI18NProvider languageProvider = new CustomI18NProvider(languageService);
-        final ComboBox<LanguageDTO> languageSelectorBox = languageProvider.getLanguageSelectorBox(userLocale, languageProvider.getTranslation("SelectLanguage", Locale.of(userLocale), ""));
+        CustomI18NProvider languageProvider = new CustomI18NProvider(languageService, languageCustomerService);
+        final ComboBox<LanguageDTO> languageSelectorBox = languageProvider.getLanguageSelectorBox(userLocale, languageProvider.getTranslation("SelectLanguage", Locale.of(userLocale), ""), true);
         languageSelectorBox.addValueChangeListener(event -> {
             optionalUser.ifPresent(userEntity -> {
                 userEntity.setLocale(event.getValue().getLocale());
