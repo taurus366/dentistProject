@@ -1,6 +1,6 @@
 package com.github.taurus366.model.entity;
 
-import com.github.taurus366.model.RoleEnum;
+import com.github.taurus366.model.enums.RoleEnum;
 import jakarta.persistence.*;
 
 @Entity(name = "roles")

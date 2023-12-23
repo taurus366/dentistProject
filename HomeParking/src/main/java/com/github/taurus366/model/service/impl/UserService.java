@@ -1,7 +1,9 @@
-package com.github.taurus366.model.service;
+package com.github.taurus366.model.service.impl;
 
 import com.github.taurus366.model.entity.UserEntity;
 import java.util.Optional;
+
+import com.github.taurus366.model.repository.UserRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;

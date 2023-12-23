@@ -1,7 +1,7 @@
 package com.github.taurus366.views.profile;
 
 import com.github.taurus366.model.entity.UserEntity;
-import com.github.taurus366.model.service.UserService;
+import com.github.taurus366.model.service.impl.UserService;
 import com.github.taurus366.security.AuthenticatedUser;
 import com.github.taurus366.views.MainLayout;
 import com.vaadin.flow.component.UI;

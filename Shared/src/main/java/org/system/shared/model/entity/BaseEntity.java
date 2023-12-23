@@ -2,9 +2,13 @@ package org.system.shared.model.entity;
 
 import jakarta.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.SourceType;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 
 
 @MappedSuperclass
@@ -18,7 +22,7 @@ public abstract class BaseEntity {
     @Column(nullable = false)
     private Instant created;
 
-    @UpdateTimestamp
+    @UpdateTimestamp(source = SourceType.DB)
     @Column(nullable = false)
     private Instant modified;
 
@@ -41,6 +45,16 @@ public abstract class BaseEntity {
     }
 
     public Instant getModified() {
+//        ZoneId localZoneId = ZoneId.systemDefault();
+//        System.out.println("Original Modified: " + modified);
+//
+//        ZonedDateTime time = modified.atZone(localZoneId);
+//        System.out.println("ZonedDateTime: " + time.toLocalDateTime().toString());
+//
+//        Instant modifiedInstant = time.toInstant();
+//        System.out.println("Converted Instant: " + modifiedInstant);
+//
+//        Instant instant = Instant.parse(time.toLocalDateTime().toString());
         return modified;
     }
 

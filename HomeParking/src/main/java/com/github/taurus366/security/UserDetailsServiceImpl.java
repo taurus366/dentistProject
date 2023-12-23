@@ -1,7 +1,7 @@
 package com.github.taurus366.security;
 
 import com.github.taurus366.model.entity.UserEntity;
-import com.github.taurus366.model.service.UserRepository;
+import com.github.taurus366.model.repository.UserRepository;
 import java.util.List;
 import java.util.stream.Collectors;
 import org.springframework.security.core.GrantedAuthority;

@@ -1,7 +1,7 @@
 package com.github.taurus366.model.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.github.taurus366.model.RoleEnum;
+import com.github.taurus366.model.enums.RoleEnum;
 import jakarta.persistence.Column;
 import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
@@ -13,7 +13,6 @@ import jakarta.persistence.Table;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-import java.util.Locale;
 import java.util.Set;
 
 @Entity

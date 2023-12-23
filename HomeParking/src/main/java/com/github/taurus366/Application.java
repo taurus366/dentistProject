@@ -1,9 +1,8 @@
 package com.github.taurus366;
 
-import com.github.taurus366.model.service.UserRepository;
+import com.github.taurus366.model.repository.UserRepository;
 import com.vaadin.flow.component.page.AppShellConfigurator;
 import com.vaadin.flow.component.page.Push;
-import com.vaadin.flow.server.AppShellSettings;
 import com.vaadin.flow.spring.annotation.EnableVaadin;
 import com.vaadin.flow.theme.Theme;
 import javax.sql.DataSource;

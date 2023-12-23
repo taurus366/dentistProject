@@ -1,8 +1,8 @@
 package com.github.taurus366.views.user;
 
-import com.github.taurus366.model.RoleEnum;
+import com.github.taurus366.model.enums.RoleEnum;
 import com.github.taurus366.model.entity.UserEntity;
-import com.github.taurus366.model.service.UserRepository;
+import com.github.taurus366.model.repository.UserRepository;
 import com.github.taurus366.security.AuthenticatedUser;
 import com.github.taurus366.uiupdate.UIItemPair;
 import com.github.taurus366.uiupdate.Updater;

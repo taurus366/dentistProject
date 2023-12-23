@@ -1,12 +1,11 @@
 package com.github.taurus366.views.client;
 
 import com.github.taurus366.model.entity.PriceListEntity;
-import com.github.taurus366.model.service.PriceListService;
+import com.github.taurus366.model.service.impl.PriceListService;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.dependency.StyleSheet;
 import com.vaadin.flow.component.html.*;
-import com.vaadin.flow.component.notification.Notification;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.BeforeEnterEvent;
 import com.vaadin.flow.router.BeforeEnterObserver;
