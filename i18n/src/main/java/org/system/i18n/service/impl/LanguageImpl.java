@@ -3,7 +3,7 @@ package org.system.i18n.service.impl;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import org.system.i18n.model.dto.LanguageDTO;
-import org.system.i18n.model.entity.Language;
+import org.system.i18n.model.entity.LanguageEntity;
 import org.system.i18n.repository.LanguageRepository;
 import org.system.i18n.service.LanguageService;
 
@@ -32,7 +32,7 @@ public class LanguageImpl implements LanguageService {
 
     @Override
     public List<LanguageDTO> getAllActiveLanguages() {
-        return this.languageRepository.findAllByActive(true)
+        return languageRepository.findAllByActive(true)
                 .stream()
                 .map(LanguageDTO::new)
                 .collect(Collectors.toList());
@@ -40,13 +40,19 @@ public class LanguageImpl implements LanguageService {
 
     @Override
     public LanguageDTO getLanguageById(Long langId) {
-        return this.languageRepository.findById(langId)
+        return languageRepository.findById(langId)
                 .map(LanguageDTO::new).orElse(null);
     }
 
     @Override
     public LanguageDTO getLanguageByLocale(String locale) {
-        final Language byLocale = this.languageRepository.findByLocale(locale);
+        final LanguageEntity byLocale = languageRepository.findByLocale(locale);
         return modelMapper.map(byLocale, LanguageDTO.class);
+    }
+
+    @Override
+    public LanguageDTO getLanguageByDeffault() {
+        final LanguageEntity byDeffault = languageRepository.findByDefaultLang(true);
+        return modelMapper.map(byDeffault, LanguageDTO.class);
     }
 }

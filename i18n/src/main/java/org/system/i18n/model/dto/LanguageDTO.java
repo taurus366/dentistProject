@@ -2,7 +2,7 @@ package org.system.i18n.model.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import org.system.i18n.model.entity.Language;
+import org.system.i18n.model.entity.LanguageEntity;
 
 @Data
 @AllArgsConstructor
@@ -18,12 +18,12 @@ public class LanguageDTO {
 
     private boolean isActive; // true
 
-    public LanguageDTO(Language language) {
-        this.id = language.getId();
-        this.name = language.getName();
-        this.isActive = language.isActive();
-        this.locale = language.getLocale();
-        this.code = language.getCode();
+    public LanguageDTO(LanguageEntity languageEntity) {
+        this.id = languageEntity.getId();
+        this.name = languageEntity.getName();
+        this.isActive = languageEntity.isActive();
+        this.locale = languageEntity.getLocale();
+        this.code = languageEntity.getCode();
     }
 
     public LanguageDTO() {

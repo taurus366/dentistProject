@@ -11,5 +11,7 @@ public interface LanguageService {
     LanguageDTO getLanguageById(Long langId);
     LanguageDTO getLanguageByLocale(String locale);
 
+    LanguageDTO getLanguageByDeffault();
+
 
 }
